@@ -5,7 +5,7 @@ const SplashScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Hello from Splash Screen</Text>
-      <Button title="Go to Home" onPress={() => navigation.replace('Main')} />
+      <Button title="Go to Home" onPress={() => navigation.replace('Login')} />
     </View>
   );
 };
