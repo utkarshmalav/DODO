@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 const SchedulePage = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Hello, You are on SchedulePage</Text>
+      <Text style={styles.text}>Hello, You are on SchedulePage sd </Text>
     </View>
   );
 };

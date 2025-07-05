@@ -1,24 +1,30 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity } from "react-native";
-import { FontAwesome5 } from '@expo/vector-icons';
+import { FontAwesome5 } from "@expo/vector-icons";
+
+import HomePage from "../pages/HomePage";
+import SchedulePage from "../pages/SchedulePage";
+import TaskPage from "../pages/TaskPage";
+import MoneyPage from "../pages/MoneyPage";
+import ProfilePage from "../pages/ProfilePage";
 
 const MainScreen = () => {
-  const [activeTab, setActiveTab] = useState('Home');
+  const [activeTab, setActiveTab] = useState("Home");
 
   const renderContent = () => {
     switch (activeTab) {
-      case 'Home':
-        return <Text style={styles.pageText}>This is the Home Page</Text>;
-      case 'Schedule':
-        return <Text style={styles.pageText}>This is the Schedule Page</Text>;
-      case 'Task':
-        return <Text style={styles.pageText}>This is the Task Page</Text>;
-      case 'Money':
-        return <Text style={styles.pageText}>This is the Money Page</Text>;
-      case 'Profile':
-        return <Text style={styles.pageText}>This is the Profile Page</Text>;
+      case "Home":
+        return <HomePage />;
+      case "Schedule":
+        return <SchedulePage />;
+      case "Task":
+        return <TaskPage />;
+      case "Money":
+        return <MoneyPage />;
+      case "Profile":
+        return <ProfilePage />;
       default:
-        return <Text style={styles.pageText}>Unknown Page</Text>;
+        return null;
     }
   };
 
@@ -31,11 +37,11 @@ const MainScreen = () => {
 
       {/* Icon Row */}
       <View style={styles.navRow}>
-        <NavItem icon="home" label="Home" isActive={activeTab === 'Home'} onPress={() => setActiveTab('Home')} />
-        <NavItem icon="calendar-alt" label="Schedule" isActive={activeTab === 'Schedule'} onPress={() => setActiveTab('Schedule')} />
-        <NavItem icon="tasks" label="Task" isActive={activeTab === 'Task'} onPress={() => setActiveTab('Task')} />
-        <NavItem icon="wallet" label="Money" isActive={activeTab === 'Money'} onPress={() => setActiveTab('Money')} />
-        <NavItem icon="user" label="Profile" isActive={activeTab === 'Profile'} onPress={() => setActiveTab('Profile')} />
+        <NavItem icon="home" label="Home" isActive={activeTab === "Home"} onPress={() => setActiveTab("Home")} />
+        <NavItem icon="calendar-alt" label="Schedule" isActive={activeTab === "Schedule"} onPress={() => setActiveTab("Schedule")} />
+        <NavItem icon="tasks" label="Task" isActive={activeTab === "Task"} onPress={() => setActiveTab("Task")} />
+        <NavItem icon="wallet" label="Money" isActive={activeTab === "Money"} onPress={() => setActiveTab("Money")} />
+        <NavItem icon="user" label="Profile" isActive={activeTab === "Profile"} onPress={() => setActiveTab("Profile")} />
       </View>
 
       {/* Content Area */}
@@ -93,12 +99,6 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    paddingHorizontal: 20,
-  },
-  pageText: {
-    fontSize: 18,
-    color: "#d35400",
+    padding: 15,
   },
 });

@@ -1,27 +1,39 @@
-import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import React, { useEffect } from "react";
+import { View, Text, StyleSheet, Image } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const SplashScreen = ({ navigation }) => {
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      const isLoggedIn = await AsyncStorage.getItem("isLoggedIn");
+      console.log("Login Status:", isLoggedIn);
+      if (isLoggedIn === "true") {
+        navigation.replace("Main");
+      } else {
+        navigation.replace("Login");
+      }
+    };
+
+    setTimeout(() => {
+      checkLoginStatus();
+    }, 3000);
+  }, [navigation]);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Hello from Splash Screen</Text>
-      <Button title="Go to Home" onPress={() => navigation.replace('Login')} />
+      <Text style={styles.tagline}>DODO: Smart Daily life tracker</Text>
     </View>
   );
 };
 
-export default SplashScreen;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#4CAF50",
   },
-  text: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
+  tagline: { fontSize: 18, color: "#fff", marginTop: 10 },
 });
+
+export default SplashScreen;
